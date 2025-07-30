@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import PlayPage from './pages/PlayPage';
@@ -11,6 +12,7 @@ import ShapesGamePage from './pages/ShapesGamePage';
 import PuzzleGamePage from './pages/PuzzleGamePage';
 import JumpingGamePage from './pages/JumpingGamePage';
 import FishingGamePage from './pages/FishingGamePage';
+
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-400 to-pink-400">
     <div className="text-center">
@@ -20,14 +22,26 @@ const LoadingSpinner = () => (
   </div>
 );
 
-function App() {
-  const [currentPage, setCurrentPage] = useState('home');
+// Ana App component'i Router içinde çalışacak
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPage = location.pathname === '/' ? 'home' : location.pathname.substring(1);
+  
+  // Navigation function - React Router ile uyumlu
+  const handleNavigate = (page: string) => {
+    if (page === 'home') {
+      navigate('/');
+    } else {
+      navigate(`/${page}`);
+    }
+  };
+
   const [timeLimit, setTimeLimit] = useState<number | null>(null);
   const [timeLimitStart, setTimeLimitStart] = useState<Date | null>(null);
   const [isTimeLimitActive, setIsTimeLimitActive] = useState(false);
   const [unlockPassword, setUnlockPassword] = useState('');
   const [showUnlockForm, setShowUnlockForm] = useState(false);
-  const [autoLoginParent, setAutoLoginParent] = useState(false);
 
   // Sayfa yüklendiğinde localStorage'dan süre sınırı durumunu kontrol et
   useEffect(() => {
@@ -60,41 +74,6 @@ function App() {
       return () => clearInterval(interval);
     }
   }, [timeLimit, timeLimitStart, isTimeLimitActive]);
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage onNavigate={setCurrentPage} />;
-      case 'play':
-        return <PlayPage onNavigate={setCurrentPage} />;
-      case 'learn':
-        return <LearnPage onNavigate={setCurrentPage} />;
-      case 'about':
-        return <AboutPage onNavigate={setCurrentPage} />;
-      case 'parent':
-        return <ParentPanel 
-          onNavigate={setCurrentPage}
-          timeLimit={timeLimit}
-          setTimeLimit={setTimeLimit}
-          setTimeLimitStart={setTimeLimitStart}
-          setIsTimeLimitActive={setIsTimeLimitActive}
-        />;
-      case 'quiz':
-        return <QuizPage onNavigate={setCurrentPage} />;
-      case 'coloring':
-        return <ColoringGamePage onNavigate={setCurrentPage} />;
-      case 'shapes':
-        return <ShapesGamePage onNavigate={setCurrentPage} />;
-      case 'puzzle':
-        return <PuzzleGamePage onNavigate={setCurrentPage} />;
-      case 'jumping':
-        return <JumpingGamePage onNavigate={setCurrentPage} />;
-      case 'fishing':
-        return <FishingGamePage onNavigate={setCurrentPage} />;
-      default:
-        return <HomePage onNavigate={setCurrentPage} />;
-    }
-  };
 
   // Süre sınırı aktif olduğunda gösterilecek ekran
   if (isTimeLimitActive) {
@@ -166,19 +145,46 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100">
       {/* Sadece genel sayfalarda header göster */}
-      {['home', 'play', 'learn', 'parent', 'about'].includes(currentPage) && (
+      {['home', 'play', 'learn', 'parent', 'about', 'quiz'].includes(currentPage) && (
         <Header 
-          currentPage={currentPage} 
-          onNavigate={setCurrentPage}
           timeLimit={timeLimit}
           timeLimitStart={timeLimitStart}
           isTimeLimitActive={isTimeLimitActive}
         />
       )}
       <main className="transition-all duration-500 ease-in-out">
-        {renderPage()}
+        <Routes>
+          <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
+          <Route path="/play" element={<PlayPage onNavigate={handleNavigate} />} />
+          <Route path="/learn" element={<LearnPage onNavigate={handleNavigate} />} />
+          <Route path="/about" element={<AboutPage onNavigate={handleNavigate} />} />
+          <Route path="/parent" element={
+            <ParentPanel 
+              onNavigate={handleNavigate}
+              timeLimit={timeLimit}
+              setTimeLimit={setTimeLimit}
+              setTimeLimitStart={setTimeLimitStart}
+              setIsTimeLimitActive={setIsTimeLimitActive}
+            />
+          } />
+          <Route path="/quiz" element={<QuizPage onNavigate={handleNavigate} />} />
+          <Route path="/coloring" element={<ColoringGamePage onNavigate={handleNavigate} />} />
+          <Route path="/shapes" element={<ShapesGamePage onNavigate={handleNavigate} />} />
+          <Route path="/puzzle" element={<PuzzleGamePage onNavigate={handleNavigate} />} />
+          <Route path="/jumping" element={<JumpingGamePage onNavigate={handleNavigate} />} />
+          <Route path="/fishing" element={<FishingGamePage onNavigate={handleNavigate} />} />
+        </Routes>
       </main>
     </div>
+  );
+}
+
+// Ana App component'i - Router wrapper'ı
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
