@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
-
-// Minimal imports - sadece gerekli olanlar
+import PlayPage from './pages/PlayPage';
+import LearnPage from './pages/LearnPage';
+import AboutPage from './pages/AboutPage';
+import ParentPanel from './pages/ParentPanel';
+import QuizPage from './pages/QuizPage';
+import ColoringGamePage from './pages/ColoringGamePage';
+import ShapesGamePage from './pages/ShapesGamePage';
+import PuzzleGamePage from './pages/PuzzleGamePage';
+import JumpingGamePage from './pages/JumpingGamePage';
+import FishingGamePage from './pages/FishingGamePage';
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-400 to-pink-400">
     <div className="text-center">
@@ -57,21 +65,34 @@ function App() {
     switch (currentPage) {
       case 'home':
         return <HomePage onNavigate={setCurrentPage} />;
+      case 'play':
+        return <PlayPage onNavigate={setCurrentPage} />;
+      case 'learn':
+        return <LearnPage onNavigate={setCurrentPage} />;
+      case 'about':
+        return <AboutPage onNavigate={setCurrentPage} />;
+      case 'parent':
+        return <ParentPanel 
+          onNavigate={setCurrentPage}
+          timeLimit={timeLimit}
+          setTimeLimit={setTimeLimit}
+          setTimeLimitStart={setTimeLimitStart}
+          setIsTimeLimitActive={setIsTimeLimitActive}
+        />;
+      case 'quiz':
+        return <QuizPage onNavigate={setCurrentPage} />;
+      case 'coloring':
+        return <ColoringGamePage onNavigate={setCurrentPage} />;
+      case 'shapes':
+        return <ShapesGamePage onNavigate={setCurrentPage} />;
+      case 'puzzle':
+        return <PuzzleGamePage onNavigate={setCurrentPage} />;
+      case 'jumping':
+        return <JumpingGamePage onNavigate={setCurrentPage} />;
+      case 'fishing':
+        return <FishingGamePage onNavigate={setCurrentPage} />;
       default:
-        return (
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="text-center p-8">
-              <h2 className="text-2xl font-bold mb-4">Bu Sayfa Hazırlanıyor</h2>
-              <p className="text-gray-600 mb-6">Yakında bu özellik aktif olacak!</p>
-              <button
-                onClick={() => setCurrentPage('home')}
-                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-              >
-                Ana Sayfaya Dön
-              </button>
-            </div>
-          </div>
-        );
+        return <HomePage onNavigate={setCurrentPage} />;
     }
   };
 
