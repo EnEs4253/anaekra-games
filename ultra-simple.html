@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Basit - Hızlı Test</title>
+    <style>
+        body { 
+            margin: 0; 
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        h1 { font-size: 3rem; margin: 0 0 1rem 0; }
+        p { font-size: 1.2rem; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Ultra Hızlı Test</h1>
+        <p>Bu sayfa anında yüklenmeli!</p>
+        <p id="time"></p>
+    </div>
+    
+    <script>
+        // Yükleme süresini göster
+        window.addEventListener('load', function() {
+            const loadTime = performance.now();
+            document.getElementById('time').textContent = 
+                `Yükleme süresi: ${Math.round(loadTime)}ms`;
+        });
+    </script>
+</body>
+</html>

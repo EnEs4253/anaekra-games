@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çocuklara Yönelik Site Yapısı</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100">
+    <div class="min-h-screen pb-20 md:pb-8">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 py-12 sm:py-20">
+            <div class="absolute inset-0">
+                <div class="absolute top-10 left-10 animate-bounce">
+                    <span class="text-yellow-400 text-2xl">⭐</span>
+                </div>
+                <div class="absolute top-20 right-16 animate-pulse">
+                    <span class="text-pink-400 text-xl">💖</span>
+                </div>
+                <div class="absolute bottom-16 left-1/4 animate-bounce delay-300">
+                    <span class="text-blue-400 text-xl">⭐</span>
+                </div>
+                <div class="absolute bottom-20 right-10 animate-pulse delay-500">
+                    <span class="text-purple-400 text-2xl">💖</span>
+                </div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-6xl font-bold text-gray-800 mb-4 animate-fade-in">
+                    Hoş Geldin!
+                    <span class="block text-3xl sm:text-4xl text-purple-600 mt-2">
+                        Eğlencenin Dünyasına 🌈
+                    </span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    Oyunlar, öğrenme ve keşiflerle dolu harika bir dünyada maceraya hazır mısın?
+                </p>
+                
+                <!-- Fun Interactive Section -->
+                <div class="relative mb-12">
+                    <!-- Rainbow Bridge -->
+                    <div class="flex justify-center items-center mb-8">
+                        <div class="bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 via-blue-400 via-purple-400 to-pink-400 h-4 w-64 sm:w-96 rounded-full shadow-lg"></div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="flex justify-center items-center space-x-8 sm:space-x-12 mb-8">
+                        <div class="bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full p-4 sm:p-6 shadow-xl transform hover:scale-110 transition-transform duration-300 cursor-pointer">
+                            <span class="text-4xl sm:text-6xl">🌟</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-pink-300 to-purple-400 rounded-full p-4 sm:p-6 shadow-xl transform hover:scale-110 transition-transform duration-300 cursor-pointer">
+                            <span class="text-4xl sm:text-6xl">🎈</span>
+                        </div>
+                        <div class="bg-gradient-to-br from-blue-300 to-cyan-400 rounded-full p-4 sm:p-6 shadow-xl transform hover:scale-110 transition-transform duration-300 cursor-pointer">
+                            <span class="text-4xl sm:text-6xl">🎪</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Welcome Message Box -->
+                    <div class="bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-white">
+                        <div class="text-center">
+                            <div class="flex justify-center space-x-4 mb-4">
+                                <span class="text-3xl sm:text-4xl animate-bounce">🎨</span>
+                                <span class="text-3xl sm:text-4xl animate-bounce delay-200">🎵</span>
+                                <span class="text-3xl sm:text-4xl animate-bounce delay-300">🎮</span>
+                                <span class="text-3xl sm:text-4xl animate-bounce delay-500">🧩</span>
+                            </div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
+                                Maceraya Hazır mısın? 🚀
+                            </h3>
+                            <p class="text-sm sm:text-base text-gray-700">
+                                Aşağıdaki kutulara tıklayarak eğlenceli dünyalara adım at!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-12 sm:py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-12">
+                    Neler Yapabilirsin?
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                    <!-- Eğlen-Öğren -->
+                    <div onclick="showMessage('Eğlen-Öğren')" class="group cursor-pointer transform hover:scale-105 active:scale-95 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-white min-h-[180px] sm:min-h-[220px] flex flex-col justify-between">
+                            <div class="text-center">
+                                <div class="text-3xl sm:text-4xl mb-3 sm:mb-4 animate-pulse">🧠</div>
+                                <div class="text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4 group-hover:animate-bounce">📚</div>
+                                <h3 class="text-lg sm:text-xl font-bold mb-2">Eğlen-Öğren</h3>
+                                <p class="text-xs sm:text-sm opacity-90 leading-relaxed">Oyunlarla öğrenmenin keyfini çıkar</p>
+                            </div>
+                            <div class="mt-4 sm:mt-6">
+                                <div class="bg-white/20 rounded-full px-3 sm:px-4 py-2 text-center">
+                                    <span class="text-xs sm:text-sm font-medium">Keşfet →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Oyna -->
+                    <div onclick="showMessage('Oyna')" class="group cursor-pointer transform hover:scale-105 active:scale-95 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-white min-h-[180px] sm:min-h-[220px] flex flex-col justify-between">
+                            <div class="text-center">
+                                <div class="text-3xl sm:text-4xl mb-3 sm:mb-4 animate-pulse">🎮</div>
+                                <div class="text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4 group-hover:animate-bounce">🎮</div>
+                                <h3 class="text-lg sm:text-xl font-bold mb-2">Oyna</h3>
+                                <p class="text-xs sm:text-sm opacity-90 leading-relaxed">Eğlenceli oyunlarla dolu maceralar</p>
+                            </div>
+                            <div class="mt-4 sm:mt-6">
+                                <div class="bg-white/20 rounded-full px-3 sm:px-4 py-2 text-center">
+                                    <span class="text-xs sm:text-sm font-medium">Keşfet →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bil Bakalım -->
+                    <div onclick="showMessage('Bil Bakalım')" class="group cursor-pointer transform hover:scale-105 active:scale-95 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-yellow-400 to-pink-500 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-white min-h-[180px] sm:min-h-[220px] flex flex-col justify-between">
+                            <div class="text-center">
+                                <div class="text-3xl sm:text-4xl mb-3 sm:mb-4 animate-pulse">❓</div>
+                                <div class="text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4 group-hover:animate-bounce">⭐</div>
+                                <h3 class="text-lg sm:text-xl font-bold mb-2">Bil Bakalım</h3>
+                                <p class="text-xs sm:text-sm opacity-90 leading-relaxed">Testlerle bilginizi ölçün</p>
+                            </div>
+                            <div class="mt-4 sm:mt-6">
+                                <div class="bg-white/20 rounded-full px-3 sm:px-4 py-2 text-center">
+                                    <span class="text-xs sm:text-sm font-medium">Keşfet →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hakkımızda -->
+                    <div onclick="showMessage('Hakkımızda')" class="group cursor-pointer transform hover:scale-105 active:scale-95 transition-all duration-300">
+                        <div class="bg-gradient-to-br from-pink-400 to-purple-500 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all duration-300 text-white min-h-[180px] sm:min-h-[220px] flex flex-col justify-between">
+                            <div class="text-center">
+                                <div class="text-3xl sm:text-4xl mb-3 sm:mb-4 animate-pulse">👨‍👩‍👧</div>
+                                <div class="text-2xl sm:text-3xl mx-auto mb-3 sm:mb-4 group-hover:animate-bounce">ℹ️</div>
+                                <h3 class="text-lg sm:text-xl font-bold mb-2">Hakkımızda</h3>
+                                <p class="text-xs sm:text-sm opacity-90 leading-relaxed">Bizimle tanışın ve daha fazla bilgi alın</p>
+                            </div>
+                            <div class="mt-4 sm:mt-6">
+                                <div class="bg-white/20 rounded-full px-3 sm:px-4 py-2 text-center">
+                                    <span class="text-xs sm:text-sm font-medium">Keşfet →</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fun Facts Section -->
+        <section class="bg-white py-12 sm:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">
+                    Eğlenceli Sayılar! 📊
+                </h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                    <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                        <div class="text-2xl sm:text-3xl font-bold text-blue-600">4</div>
+                        <div class="text-xs sm:text-sm text-blue-700 font-medium">Oyun Kategorisi</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-100 to-green-200 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                        <div class="text-2xl sm:text-3xl font-bold text-green-600">3</div>
+                        <div class="text-xs sm:text-sm text-green-700 font-medium">Öğrenme Alanı</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-100 to-purple-200 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                        <div class="text-2xl sm:text-3xl font-bold text-purple-600">∞</div>
+                        <div class="text-xs sm:text-sm text-purple-700 font-medium">Eğlence</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-pink-100 to-pink-200 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                        <div class="text-2xl sm:text-3xl font-bold text-pink-600">100%</div>
+                        <div class="text-xs sm:text-sm text-pink-700 font-medium">Güvenli</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function showMessage(section) {
+            alert(section + ' bölümü yakında eklenecek! 🎉');
+        }
+        
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            console.log('Sayfa tamamen yüklendi:', performance.now() + 'ms');
+        });
+    </script>
+</body>
+</html>

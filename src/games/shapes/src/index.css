@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Animation delays */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Smooth touch interactions */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Custom gradient backgrounds */
+.bg-gradient-celebratory {
+  background: radial-gradient(circle at center, 
+    rgba(255, 215, 0, 0.3) 0%, 
+    rgba(255, 105, 180, 0.2) 50%, 
+    rgba(64, 224, 208, 0.1) 100%);
+}
+
+/* Responsive design improvements */
+@media (max-width: 640px) {
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .stroke-gray-300 {
+    stroke: #666;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce,
+  .animate-ping,
+  .animate-pulse,
+  .animate-shake {
+    animation: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}

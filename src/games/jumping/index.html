@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zıpla! Oyunu</title>
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Menu Screen -->
+        <div id="menuScreen" class="screen active">
+            <div class="title">
+                <h1>🐰 Zıpla! Oyunu</h1>
+                <p>3-7 yaş çocuklar için eğitici oyun</p>
+            </div>
+            <div class="character-selection">
+                <h3>Karakterini Seç:</h3>
+                <div class="characters">
+                    <button class="character-btn active" data-character="rabbit">🐰 Tavşan</button>
+                    <button class="character-btn" data-character="cat">🐱 Kedi</button>
+                    <button class="character-btn" data-character="panda">🐼 Panda</button>
+                </div>
+            </div>
+            <button id="playBtn" class="play-btn">Oyna!</button>
+            <button id="soundToggle" class="sound-btn">🔊</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="screen">
+            <div class="game-ui">
+                <div class="score-panel">
+                    <div class="counter">
+                        <span class="icon">🏃</span>
+                        <span>Koşuyor!</span>
+                    </div>
+                </div>
+            </div>
+            <canvas id="gameCanvas"></canvas>
+            <div class="jump-instruction">
+                <p id="jumpText">Zıplamak için ekrana dokun!</p>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen">
+            <div class="results">
+                <h2>Tebrikler! 🎉</h2>
+                <div class="achievements">
+                    <div class="achievement">
+                        <span class="icon">🏆</span>
+                        <span>Oyun bitti!</span>
+                    </div>
+                    <div class="achievement">
+                        <span class="icon">🏃</span>
+                        <span>Koşmaya devam et!</span>
+                    </div>
+                    <div class="achievement">
+                        <span class="icon">💪</span>
+                        <span>Tekrar dene!</span>
+                    </div>
+                </div>
+                <button id="playAgainBtn" class="play-btn">Tekrar Oyna!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/game.js"></script>
+</body>
+</html>
