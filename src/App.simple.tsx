@@ -12,7 +12,6 @@ import PuzzleGamePage from './pages/PuzzleGamePage';
 import JumpingGamePage from './pages/JumpingGamePage';
 import FishingGamePage from './pages/FishingGamePage';
 
-// Basit navigation - çok hızlı yükleme için
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [timeLimit, setTimeLimit] = useState<number | null>(null);
@@ -160,7 +159,6 @@ function App() {
       {/* Sadece genel sayfalarda header göster */}
       {['home', 'play', 'learn', 'parent', 'about', 'quiz'].includes(currentPage) && (
         <Header 
-          onNavigate={setCurrentPage}
           timeLimit={timeLimit}
           timeLimitStart={timeLimitStart}
           isTimeLimitActive={isTimeLimitActive}

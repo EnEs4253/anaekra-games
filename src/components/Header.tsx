@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 
 interface HeaderProps {
+  onNavigate?: (page: string) => void;
   timeLimit: number | null;
   timeLimitStart: Date | null;
   isTimeLimitActive: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ timeLimit, timeLimitStart, isTimeLimitActive }) => {
-  const location = useLocation();
-  const currentPage = location.pathname === '/' ? 'home' : location.pathname.substring(1);
+const Header: React.FC<HeaderProps> = ({ onNavigate, timeLimit, timeLimitStart, isTimeLimitActive }) => {
   const [orientation, setOrientation] = React.useState<'portrait' | 'landscape'>('portrait');
   const [remainingTime, setRemainingTime] = useState<string>('');
 
@@ -49,12 +47,15 @@ const Header: React.FC<HeaderProps> = ({ timeLimit, timeLimitStart, isTimeLimitA
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <div 
+            className="flex items-center space-x-2 cursor-pointer"
+            onClick={() => onNavigate && onNavigate('home')}
+          >
             <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-xl">🌟</span>
             </div>
             <h1 className="text-xl sm:text-2xl font-bold text-gray-800">ÇocukDünyası</h1>
-          </Link>
+          </div>
 
           {/* Time Remaining & Orientation Toggle */}
           <div className="flex items-center space-x-3">
